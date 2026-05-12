@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Youth Livelihoods Pulse · GenU MERL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #F7F6F2;
+  --surface:   #FFFFFF;
+  --border:    #E4E2DA;
+  --border-md: #C8C5BC;
+  --text-1:    #1A1917;
+  --text-2:    #5C5A55;
+  --text-3:    #9B9891;
+  --accent:    #1A6B4A;
+  --accent-bg: #EAF5EF;
+  --accent-bd: #A8D9BC;
+  --star:      #B06A00;
+  --star-bg:   #FDF3E3;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-serif:'DM Serif Display', Georgia, serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text-1);font-size:15px;line-height:1.6}
+.page{max-width:780px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+
+/* masthead */
+.masthead{border-bottom:1.5px solid var(--border-md);padding-bottom:1.25rem;margin-bottom:1.75rem}
+.masthead-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px}
+.masthead-title{font-family:var(--font-serif);font-size:34px;color:var(--text-1);line-height:1.1;margin-bottom:0.4rem}
+.masthead-title span{font-style:italic;color:var(--accent)}
+.masthead-subtitle{font-family:var(--font-sans);font-style:italic;font-size:16px;color:var(--text-3);margin-bottom:1.25rem}
+
+/* edition tabs */
+.edition-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.75rem}
+.tab{font-family:var(--font-sans);font-size:12px;padding:6px 14px;border-radius:20px;border:1px solid var(--border-md);background:var(--surface);color:var(--text-2);cursor:pointer;transition:all 0.15s}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.tab-new{font-size:10px;background:#EAF5EF;color:var(--accent);border-radius:10px;padding:1px 6px;margin-left:4px;vertical-align:1px}
+
+/* editorial */
+.editorial{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;margin-bottom:1.75rem;position:relative}
+.editorial-label{font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px}
+.editorial-body{font-family:var(--font-sans);font-size:14px;color:var(--text-2);line-height:1.65}
+
+/* stats */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1.5rem}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:12px 14px}
+.stat-n{font-size:24px;font-weight:500;color:var(--text-1)}
+.stat-l{font-size:11px;color:var(--text-3);margin-top:2px}
+
+/* toolbar */
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:1rem;flex-wrap:wrap}
+.toolbar-title{font-size:12px;font-weight:500;color:var(--text-3)}
+.toolbar-right{display:flex;gap:6px;flex-shrink:0}
+.btn{font-family:var(--font-sans);font-size:12px;padding:6px 12px;border-radius:var(--radius-sm);border:1px solid var(--border-md);background:var(--surface);color:var(--text-2);cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:all 0.12s}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn.primary:hover{opacity:0.9}
+
+/* filters */
+.filter-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px;margin-bottom:1.5rem}
+.filter-group{margin-bottom:10px}
+.filter-group:last-child{margin-bottom:0}
+.filter-group-label{font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip{font-size:11px;padding:3px 10px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-2);cursor:pointer;transition:all 0.12s;font-family:var(--font-sans)}
+.chip:hover{border-color:var(--border-md)}
+.chip.on-type{background:#EEEDFE;color:#3C3489;border-color:#AFA9EC}
+.chip.on-country{background:var(--accent-bg);color:var(--accent);border-color:var(--accent-bd)}
+.chip.on-theme{background:var(--star-bg);color:var(--star);border-color:#E8C07A}
+.chip.on-special{background:var(--star-bg);color:var(--star);border-color:#E8C07A}
+
+/* section */
+.section-head{font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-3);margin:1.5rem 0 8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+
+/* cards */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;margin-bottom:8px;transition:border-color 0.15s}
+.card:hover{border-color:var(--border-md)}
+.card.dimmed{opacity:0.4}
+.card-row{display:flex;gap:12px}
+.card-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.card-body{flex:1;min-width:0}
+.card-title{font-size:14px;font-weight:500;color:var(--text-1);line-height:1.35;margin-bottom:3px}
+.card-title a{color:var(--text-1);text-decoration:none}
+.card-title a:hover{text-decoration:underline;color:var(--accent)}
+.star-inline{color:var(--star);font-size:13px;vertical-align:1px;margin-left:3px}
+.card-source{font-size:11px;color:var(--text-3);margin-bottom:9px}
+.card-excerpt{font-size:13px;color:var(--text-2);line-height:1.55;margin-bottom:10px}
+.genu-block{border-left:2.5px solid var(--accent);padding:6px 0 6px 10px;margin-bottom:10px}
+.genu-label{font-size:9px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.genu-text{font-size:12px;color:var(--text-2);line-height:1.5}
+.card-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.tags{display:flex;flex-wrap:wrap;gap:3px}
+.tag{font-size:10px;padding:2px 7px;border-radius:10px}
+.tag-flagship{background:#EEEDFE;color:#3C3489}
+.tag-trend{background:#FDF3E3;color:#7A4800}
+.tag-regional{background:#E1F5EE;color:#085041}
+.tag-policy{background:#FAECE7;color:#712B13}
+.tag-programme{background:#FBEAF0;color:#72243E}
+.tag-merl{background:#E6F1FB;color:#0C447C}
+.tag-country{background:var(--accent-bg);color:var(--accent)}
+.tag-plain{background:#F1EFE8;color:#5F5E5A}
+.card-actions{display:flex;gap:2px}
+.act{background:none;border:none;cursor:pointer;color:var(--text-3);padding:4px 5px;border-radius:var(--radius-sm);font-size:14px;line-height:1;transition:all 0.12s}
+.act:hover{background:var(--bg);color:var(--text-2)}
+.act.starred{color:var(--star)}
+.act.read-done{color:var(--accent)}
+.notes-toggle{font-size:11px;color:var(--text-3);cursor:pointer;background:none;border:none;padding:2px 0;margin-top:8px;display:inline-flex;align-items:center;gap:4px;font-family:var(--font-sans)}
+.notes-toggle:hover{color:var(--text-2)}
+.notes-ta{width:100%;margin-top:6px;font-size:12px;font-family:var(--font-sans);background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 10px;color:var(--text-1);resize:vertical;line-height:1.5}
+
+/* add form */
+.add-form{background:var(--surface);border:1px dashed var(--border-md);border-radius:var(--radius-lg);padding:18px 20px;margin-top:1.25rem}
+.add-form-title{font-size:13px;font-weight:500;color:var(--text-2);margin-bottom:12px}
+.form-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.form-row input,.form-row select,.form-row textarea{font-family:var(--font-sans);font-size:13px;padding:7px 10px;border:1px solid var(--border-md);border-radius:var(--radius-sm);background:var(--bg);color:var(--text-1);outline:none}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--accent)}
+.form-row textarea{resize:vertical;line-height:1.5}
+.f-flex{flex:1;min-width:140px}
+.f-full{width:100%}
+.form-hint{font-size:11px;color:var(--text-3);margin-bottom:8px}
+
+/* export */
+.export-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;margin-top:1rem}
+.export-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.export-label{font-size:12px;font-weight:500;color:var(--text-2)}
+.export-ta{width:100%;font-family:monospace;font-size:12px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;color:var(--text-2);resize:vertical;line-height:1.6;min-height:200px}
+
+.empty{padding:3rem;text-align:center;color:var(--text-3);font-size:14px}
+
+@media(max-width:540px){
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .masthead-title{font-size:26px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!--
+=================================================================
+  DATA — EDIT THIS SECTION EACH QUARTER
+=================================================================
+
+  TO ADD A NEW QUARTER:
+  1. Add a new block inside "editions": { ... }
+  2. Copy the Q1 structure, change the key (e.g. "Q2 2026")
+  3. Write the new editorial and add new entries
+  4. Set "latest" to the new quarter key
+  5. Old quarters stay untouched — they become archive tabs
+
+  ENTRY FIELDS:
+    id        — unique number, keep incrementing
+    type      — flagship | trend | regional | policy | programme | merl
+    starred   — true = must-read
+    title     — full title
+    source    — "Organisation · Month Year"
+    url       — link or ""
+    excerpt   — 2-3 sentence key takeaway
+    genu      — one sentence: why should the GenU team care?
+    countries — array: ["Bangladesh","Global"]
+    themes    — array: ["NEET","AI","green jobs"]
+=================================================================
+-->
+
+<script id="pulse-data" type="application/json">
+{
+  "latest": "Q1 2026",
+  "editions": {
+
+    "Q1 2026": {
+      "editorial": "The big signal this quarter is the convergence of two crises: AI is quietly eliminating entry-level jobs not through layoffs but through reduced hiring, while mental health and economic inactivity are becoming the primary drivers of NEET status, especially in middle-income countries. For GenU, this reshapes what 'pathways to employment' actually means and raises hard questions about whether our programme models are keeping pace. Three reads are starred as must-reads this edition.",
+      "entries": [
+        {
+          "id": 1, "type": "flagship", "starred": true,
+          "title": "ILO Employment and Social Trends 2026",
+          "source": "ILO · January 2026",
+          "url": "https://www.ilo.org/publications/flagship-reports/employment-and-social-trends-2026",
+          "excerpt": "Global youth unemployment at 12.4%; 260 million young people NEET. Progress on decent work has stalled. AI and trade volatility flagged as emerging threats to entry-level job creation. Jobs gap projected at 408 million people.",
+          "genu": "The NEET and decent work data are our primary benchmarking baseline for 2026 — use the regional breakdowns to frame country-level programme narratives, especially for Sub-Saharan Africa and South Asia.",
+          "countries": ["Global"], "themes": ["NEET", "decent work", "data", "informality"]
+        },
+        {
+          "id": 2, "type": "flagship", "starred": false,
+          "title": "World Development Indicators 2026 — youth unemployment data update",
+          "source": "World Bank / ILO · Q1 2026",
+          "url": "https://ourworldindata.org/grapher/unemployment-rate-for-young-people",
+          "excerpt": "Updated modelled estimates for youth unemployment across 200+ countries, with improved harmonisation methodology. Useful for cross-country benchmarking and MERL indicator tracking.",
+          "genu": "Good source for country-level baselines in our programme countries. Useful when setting MERL targets or contextualising outcome data from Bangladesh, Nigeria, Rwanda.",
+          "countries": ["Global"], "themes": ["data", "benchmarking", "MERL indicators"]
+        },
+        {
+          "id": 3, "type": "trend", "starred": true,
+          "title": "Is AI behind youth unemployment? Entry-level roles quietly disappearing",
+          "source": "LSE British Politics & Policy · April 2026",
+          "url": "https://blogs.lse.ac.uk/politicsandpolicy/is-ai-behind-youth-unemployment/",
+          "excerpt": "Employment in AI-exposed roles for 22-25 year-olds fell 13% between 2022-2026, driven by reduced new hiring rather than layoffs. Mental health and economic inactivity now rival job scarcity as NEET drivers — 44% of NEET youth report a work-limiting health condition, up from 26% in 2015.",
+          "genu": "Challenges the assumption that job-readiness skills alone are enough. If the entry-level is shrinking, our P2E and skilling models need to measure placement quality — not just placement rates.",
+          "countries": ["UK", "Global"], "themes": ["AI", "NEET", "mental health", "future of work"]
+        },
+        {
+          "id": 4, "type": "trend", "starred": false,
+          "title": "AI, automation and the vanishing entry-level job",
+          "source": "PeopleScout Global Analysis · April 2026",
+          "url": "https://www.peoplescout.com/insights/global-youth-employment-ai-automation-vanishing-entry-level/",
+          "excerpt": "More than 1 in 4 young people globally are NEET. AI absorbing repeatable tasks reduces junior hiring, creating a hidden pipeline gap for mid-level leadership by the mid-2030s. Germany's dual education model (6.6% youth unemployment) cited as a structural counter-example.",
+          "genu": "Adds private-sector perspective to the AI-jobs debate. The dual apprenticeship angle is relevant for GenU's TVET and employer-partnership workstreams.",
+          "countries": ["Global", "Germany"], "themes": ["AI", "TVET", "private sector", "future of work"]
+        },
+        {
+          "id": 5, "type": "regional", "starred": true,
+          "title": "ASEAN Ahead: AI & digital skills for NEET and TVET youth",
+          "source": "ASEAN Foundation + LinkedIn · February 2026",
+          "url": "https://aseanfoundation.org/advancing-future-skills-for-asean-youth-workforce-asean-foundation-and-linkedin-launch-asean-ahead-programme/",
+          "excerpt": "New regional programme across 11 ASEAN member states targeting a 16.3% NEET rate. Combines AI career training, peer mentorship, and employer matching. Aligned with ASEAN Responsible AI Roadmap and ASEAN Vision 2045.",
+          "genu": "Directly relevant for Vietnam and the broader Southeast Asia context. The employer-matching mechanism and AI readiness framing are worth examining for GenU regional programming.",
+          "countries": ["ASEAN", "Vietnam"], "themes": ["digital skills", "AI", "TVET", "platform economy"]
+        },
+        {
+          "id": 6, "type": "regional", "starred": false,
+          "title": "Sub-Saharan Africa: 9 in 10 workers in informal employment",
+          "source": "ILO Employment & Social Trends 2026 — regional spotlight",
+          "url": "https://news.un.org/en/story/2026/01/1166751",
+          "excerpt": "Job creation in sub-Saharan Africa is not keeping pace with rapid population growth. Over half of workers live below the moderate poverty threshold. Structural transformation has markedly slowed.",
+          "genu": "Critical backdrop for Nigeria and Rwanda programme design. Our MERL frameworks should measure quality of employment, not just employment status.",
+          "countries": ["Nigeria", "Rwanda", "Sub-Saharan Africa"], "themes": ["informality", "working poverty", "structural transformation"]
+        },
+        {
+          "id": 7, "type": "policy", "starred": false,
+          "title": "UK: 1 billion pound youth employment package & expanded Youth Guarantee",
+          "source": "UK Government / TUC · Q1 2026",
+          "url": "https://in4group.co.uk/press/there-is-big-business-value-in-recruiting-16-year-old-ai-natives/",
+          "excerpt": "Youth Jobs Grant for employers; Youth Guarantee expanded to 18-24-year-olds; Level 4 AI apprenticeship launched. Around 957,000 young people NEET in the UK — surpassing the EU average for the first time since records began.",
+          "genu": "Useful policy design reference: demand-side incentives combined with supply-side guarantees. Good for advocacy briefs on national policy responses.",
+          "countries": ["UK"], "themes": ["national policy", "apprenticeship", "NEET guarantee", "demand-side incentives"]
+        },
+        {
+          "id": 8, "type": "policy", "starred": false,
+          "title": "Green Jobs for Youth Pact: EFE joins ILO-UNEP-UNICEF initiative",
+          "source": "ILO / UNEP / UNICEF · February 2026",
+          "url": "https://www.ilo.org/education-employment-joins-forces-un-led-green-jobs-youth-pact",
+          "excerpt": "Education for Employment (MENA) joins the tripartite pact targeting 1 million new green jobs for youth by 2030, and 10,000 young green entrepreneurs. Focus on developing regions where environmental challenges are most pressing.",
+          "genu": "GenU is a co-lead on the Green Jobs for Youth Pact. Track new partner announcements for alignment with our green economy workstream and CO communications.",
+          "countries": ["MENA", "Global"], "themes": ["green jobs", "climate", "UNICEF", "partnerships"]
+        },
+        {
+          "id": 9, "type": "programme", "starred": true,
+          "title": "UNDP Bangladesh NISE platform: AI job-matching at scale",
+          "source": "UNDP Bangladesh · Q1 2026",
+          "url": "https://www.undp.org/bangladesh/news/empowering-youth-digital-skills-and-ai",
+          "excerpt": "National Intelligence for Skills platform connects youth across all 64 districts to training, freelancing, and entrepreneurship. Includes real-time labour market insights and predictive skills forecasting. Being adapted in Ghana and Somalia.",
+          "genu": "Directly relevant for our P2E Bangladesh workstream. Worth exploring whether GenU/P2E data could be integrated or benchmarked against NISE data.",
+          "countries": ["Bangladesh", "Ghana", "Somalia"], "themes": ["AI", "digital", "scale", "government systems"]
+        },
+        {
+          "id": 10, "type": "programme", "starred": false,
+          "title": "Skilling youth on the move for the green economy",
+          "source": "World Bank / UNICEF · Q1 2026",
+          "url": "https://blogs.worldbank.org/en/education/skilling--youth-on-the-move--to-help-power-the-green-economy",
+          "excerpt": "UNICEF report outlines three government pathways for including displaced youth in green transitions. Green transitions could create 8.4 million jobs for young people by 2030 — but mobile youth are systematically excluded from green skilling policies.",
+          "genu": "Relevant for any CO working with displaced or migrant youth. Good precedent for advocating integrated targeting in green skilling programmes.",
+          "countries": ["Global"], "themes": ["green jobs", "displacement", "UNICEF", "green transition"]
+        },
+        {
+          "id": 11, "type": "merl", "starred": false,
+          "title": "ILO: Assessing the green economy via harmonised labour force surveys",
+          "source": "ILO · February 2026",
+          "url": "https://www.ilo.org/topics-and-sectors/youth-employment",
+          "excerpt": "Methodological paper on measuring green economy employment using harmonised LFS data. Provides a cross-nationally comparable framework for defining and counting green jobs — currently a major measurement gap.",
+          "genu": "Practical reference for MERL teams designing green economy indicators. Use this to push back on ad hoc definitions when COs are asked to report on green job outcomes.",
+          "countries": ["Global"], "themes": ["methodology", "green economy", "measurement", "LFS"]
+        },
+        {
+          "id": 12, "type": "merl", "starred": false,
+          "title": "World Bank Youth Summit 2026 — FutureWorks: jobs for the digital age",
+          "source": "World Bank · June 2026 (upcoming)",
+          "url": "https://www.worldbank.org/en/events/2026/06/11/youth-summit-2026-future-works-designing-jobs-for-the-digital-age",
+          "excerpt": "Summit focus: digital transformation, skills, entrepreneurship, and agriculture. Nearly 800 million young people at risk of labour market exclusion. Watch for evaluation and evidence sessions on measurement approaches.",
+          "genu": "Flag for Q2 tracker. WBG Youth Summit evidence sessions often yield practical tools and comparative data worth sharing with the team.",
+          "countries": ["Global"], "themes": ["digital economy", "evidence", "upcoming event"]
+        }
+      ]
+    }
+
+  }
+}
+</script>
+
+<!-- PAGE — no need to edit below this line -->
+
+<div class="masthead">
+  <div class="masthead-eyebrow">GenU MERL Team · Knowledge Monitoring</div>
+  <div class="masthead-title">Youth Livelihoods <span>Pulse</span></div>
+  <div class="masthead-subtitle">What's happening in the world of youth livelihoods?</div>
+  <div class="edition-tabs" id="edition-tabs"></div>
+</div>
+
+<div class="editorial" id="editorial-block">
+  <div class="editorial-label">Editor's note · theme of the edition</div>
+  <div class="editorial-body" id="editorial-view"></div>
+</div>
+
+<div class="stats-row" id="stats-row"></div>
+
+<div class="toolbar">
+  <span class="toolbar-title">Filters</span>
+  <div class="toolbar-right">
+    <button class="btn" onclick="clearFilters()">Clear filters</button>
+    <button class="btn primary" onclick="toggleExport()">Export digest</button>
+  </div>
+</div>
+
+<div class="filter-section">
+  <div class="filter-group">
+    <div class="filter-group-label">Entry type</div>
+    <div class="chips" id="type-chips"></div>
+  </div>
+  <div class="filter-group">
+    <div class="filter-group-label">Country / region</div>
+    <div class="chips" id="country-chips"></div>
+  </div>
+  <div class="filter-group">
+    <div class="filter-group-label">Theme</div>
+    <div class="chips" id="theme-chips"></div>
+  </div>
+</div>
+
+<div id="entries-wrap"></div>
+
+<div id="export-wrap" style="display:none">
+  <div class="export-box">
+    <div class="export-head">
+      <span class="export-label">Plain-text digest — paste into your email newsletter</span>
+      <button class="btn" onclick="copyExport()">Copy all</button>
+    </div>
+    <textarea class="export-ta" id="export-ta" readonly></textarea>
+  </div>
+</div>
+
+</div>
+
+<script>
+const DATA = JSON.parse(document.getElementById('pulse-data').textContent);
+const editionKeys = Object.keys(DATA.editions);
+let currentEdition = DATA.latest;
+
+const SECTIONS = [
+  {id:'flagship',  label:'Flagship reports & global data'},
+  {id:'trend',     label:'Trends & think pieces'},
+  {id:'regional',  label:'Regional updates'},
+  {id:'policy',    label:'Policy developments'},
+  {id:'programme', label:'Programme highlights'},
+  {id:'merl',      label:'MERL for youth livelihoods'},
+];
+const TYPE_META = {
+  flagship:  {label:'Flagship report',     dot:'#534AB7', tag:'tag-flagship'},
+  trend:     {label:'Trend / think piece', dot:'#B06A00', tag:'tag-trend'},
+  regional:  {label:'Regional',            dot:'#1D9E75', tag:'tag-regional'},
+  policy:    {label:'Policy',              dot:'#C04B28', tag:'tag-policy'},
+  programme: {label:'Programme highlight', dot:'#B03070', tag:'tag-programme'},
+  merl:      {label:'MERL',               dot:'#2970B0', tag:'tag-merl'},
+};
+
+/* per-edition runtime state */
+const state = {};
+editionKeys.forEach(k => {
+  state[k] = { fTypes: new Set(), fCountries: new Set(), fThemes: new Set(), fStarred: false, fUnread: false, reads: {} };
+});
+
+function S(){ return state[currentEdition]; }
+function entries(){ return DATA.editions[currentEdition].entries; }
+
+const allCountries = () => [...new Set(entries().flatMap(e=>e.countries))].sort();
+const allThemes    = () => [...new Set(entries().flatMap(e=>e.themes))].sort();
+
+function filtered(){
+  const s = S();
+  return entries().filter(e => {
+    if(s.fTypes.size     && !s.fTypes.has(e.type))                       return false;
+    if(s.fCountries.size && !e.countries.some(c=>s.fCountries.has(c)))   return false;
+    if(s.fThemes.size    && !e.themes.some(t=>s.fThemes.has(t)))         return false;
+    if(s.fStarred && !e.starred)  return false;
+    if(s.fUnread  &&  s.reads[e.id]) return false;
+    return true;
+  });
+}
+
+function clearFilters(){
+  const s=S(); s.fTypes.clear(); s.fCountries.clear(); s.fThemes.clear();
+  s.fStarred=false; s.fUnread=false; render();
+}
+function toggle(setName, val){
+  const s=S(); const set=s[setName];
+  set.has(val)?set.delete(val):set.add(val); render();
+}
+function toggleStarred(){ S().fStarred=!S().fStarred; render(); }
+function toggleUnread(){   S().fUnread=!S().fUnread;   render(); }
+function toggleRead(id){
+  const r=S().reads; r[id]=!r[id]; render();
+}
+
+/* tabs */
+function renderTabs(){
+  document.getElementById('edition-tabs').innerHTML = editionKeys.map((k,i) => {
+    const isLatest = k === DATA.latest;
+    const isActive = k === currentEdition;
+    return `<button class="tab${isActive?' active':''}" onclick="switchEdition('${k}')">
+      ${k}${isLatest?'<span class="tab-new">latest</span>':''}
+    </button>`;
+  }).join('');
+}
+function switchEdition(k){ currentEdition=k; render(); }
+
+/* editorial */
+function renderEditorial(){
+  document.getElementById('editorial-view').textContent = DATA.editions[currentEdition].editorial;
+}
+
+/* stats */
+function renderStats(){
+  const fe=filtered(); const all=entries(); const s=S();
+  const unread=all.filter(e=>!s.reads[e.id]).length;
+  const starred=all.filter(e=>e.starred).length;
+  document.getElementById('stats-row').innerHTML=`
+    <div class="stat"><div class="stat-n">${all.length}</div><div class="stat-l">Entries this edition</div></div>
+    <div class="stat"><div class="stat-n">${fe.length}</div><div class="stat-l">Showing</div></div>
+    <div class="stat"><div class="stat-n">${starred}</div><div class="stat-l">Must-reads</div></div>
+    <div class="stat"><div class="stat-n">${unread}</div><div class="stat-l">Unread</div></div>
+  `;
+}
+
+/* chips */
+function renderChips(){
+  const s=S();
+  document.getElementById('type-chips').innerHTML =
+    Object.keys(TYPE_META).map(k=>`<button class="chip${s.fTypes.has(k)?' on-type':''}" onclick="toggle('fTypes','${k}')">${TYPE_META[k].label}</button>`).join('')
+    +`<button class="chip${s.fStarred?' on-special':''}" onclick="toggleStarred()">Must-reads only</button>`
+    +`<button class="chip${s.fUnread?' on-special':''}" onclick="toggleUnread()">Unread only</button>`;
+
+  document.getElementById('country-chips').innerHTML =
+    allCountries().map(c=>`<button class="chip${s.fCountries.has(c)?' on-country':''}" onclick="toggle('fCountries','${c.replace(/'/g,"\\'")}')">${c}</button>`).join('');
+
+  document.getElementById('theme-chips').innerHTML =
+    allThemes().map(t=>`<button class="chip${s.fThemes.has(t)?' on-theme':''}" onclick="toggle('fThemes','${t.replace(/'/g,"\\'")}')">${t}</button>`).join('');
+}
+
+/* entries */
+function renderEntries(){
+  const fe=filtered(); const s=S();
+  let html=''; let any=false;
+  SECTIONS.forEach(sec=>{
+    const se=fe.filter(e=>e.type===sec.id);
+    if(!se.length) return;
+    any=true;
+    html+=`<div class="section-head">${sec.label}</div>`;
+    se.forEach(e=>{
+      const tm=TYPE_META[e.type];
+      const isRead=!!s.reads[e.id];
+      html+=`<div class="card${isRead?' dimmed':''}">
+        <div class="card-row">
+          <div class="card-dot" style="background:${tm.dot}"></div>
+          <div class="card-body">
+            <div class="card-title">
+              ${e.url?`<a href="${e.url}" target="_blank" rel="noopener">${e.title}</a>`:e.title}
+              ${e.starred?'<span class="star-inline">&#9733;</span>':''}
+            </div>
+            <div class="card-source">${e.source}</div>
+            ${e.excerpt?`<div class="card-excerpt">${e.excerpt}</div>`:''}
+            ${e.genu?`<div class="genu-block"><div class="genu-label">GenU relevance</div><div class="genu-text">${e.genu}</div></div>`:''}
+            <div class="card-footer">
+              <div class="tags">
+                <span class="tag ${tm.tag}">${tm.label}</span>
+                ${e.countries.map(c=>`<span class="tag tag-country">${c}</span>`).join('')}
+                ${e.themes.slice(0,3).map(t=>`<span class="tag tag-plain">${t}</span>`).join('')}
+                ${e.themes.length>3?`<span class="tag tag-plain">+${e.themes.length-3} more</span>`:''}
+              </div>
+              <div class="card-actions">
+                <button class="act${isRead?' read-done':''}" onclick="toggleRead(${e.id})" title="${isRead?'Mark unread':'Mark as read'}">&#10003;</button>
+              </div>
+            </div>
+            <button class="notes-toggle" onclick="toggleNotes(${e.id})">&#9998; ${document.getElementById('nt'+e.id)&&document.getElementById('nt'+e.id).value?'View notes':'Add notes'}</button>
+            <textarea class="notes-ta" id="nt${e.id}" style="display:none" placeholder="Your annotations or key takeaways..." rows="2"></textarea>
+          </div>
+        </div>
+      </div>`;
+    });
+  });
+  if(!any) html=`<div class="empty">No entries match the current filters. <button class="btn" onclick="clearFilters()" style="margin-left:8px">Clear filters</button></div>`;
+  document.getElementById('entries-wrap').innerHTML=html;
+}
+
+function toggleNotes(id){
+  const el=document.getElementById('nt'+id);
+  if(el) el.style.display=el.style.display==='none'?'block':'none';
+}
+
+/* export */
+function toggleExport(){
+  const w=document.getElementById('export-wrap');
+  if(w.style.display!=='none'){w.style.display='none';return;}
+  const ed=DATA.editions[currentEdition];
+  const dash='─'.repeat(54);
+  let txt=`YOUTH LIVELIHOODS PULSE — ${currentEdition}\nGenU MERL Team · Knowledge Monitoring\n${dash}\n\nEDITOR'S NOTE\n${ed.editorial}\n`;
+  SECTIONS.forEach(sec=>{
+    const se=ed.entries.filter(e=>e.type===sec.id);
+    if(!se.length) return;
+    txt+=`\n${dash}\n${sec.label.toUpperCase()}\n`;
+    se.forEach(e=>{
+      txt+=`\n${e.starred?'★ ':'  '}${e.title}\n   ${e.source}\n`;
+      if(e.excerpt) txt+=`   ${e.excerpt}\n`;
+      if(e.genu)    txt+=`   ▸ GenU relevance: ${e.genu}\n`;
+      if(e.url)     txt+=`   ${e.url}\n`;
+    });
+  });
+  document.getElementById('export-ta').value=txt;
+  w.style.display='block';
+}
+function copyExport(){
+  const ta=document.getElementById('export-ta'); ta.select(); document.execCommand('copy');
+}
+
+function render(){
+  renderTabs();
+  renderEditorial();
+  renderStats();
+  renderChips();
+  renderEntries();
+  document.getElementById('export-wrap').style.display='none';
+}
+
+render();
+</script>
+</body>
+</html>
