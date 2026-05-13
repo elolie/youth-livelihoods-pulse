@@ -239,8 +239,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text-1);font-
           "excerpt": "More than 1 in 4 young people globally are NEET. AI absorbing repeatable tasks reduces junior hiring, creating a hidden pipeline gap for mid-level leadership by the mid-2030s. Germany's dual education model (6.6% youth unemployment) cited as a structural counter-example.",
           "genu": "Adds private-sector perspective to the AI-jobs debate. The dual apprenticeship angle is relevant for GenU's TVET and employer-partnership workstreams.",
           "countries": [
-            "Global",
-            "Germany"
+            "Global"
           ],
           "themes": [
             "Sector Spotlight",
@@ -258,8 +257,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text-1);font-
           "excerpt": "New regional programme across 11 ASEAN member states targeting a 16.3% NEET rate. Combines AI career training, peer mentorship, and employer matching. Aligned with ASEAN Responsible AI Roadmap and ASEAN Vision 2045.",
           "genu": "Directly relevant for Vietnam and the broader Southeast Asia context. The employer-matching mechanism and AI readiness framing are worth examining for GenU regional programming.",
           "countries": [
-            "ASEAN",
-            "Vietnam"
+            "East Asia & Pacific"
           ],
           "themes": [
             "Skilling",
@@ -276,8 +274,6 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text-1);font-
           "excerpt": "Job creation in sub-Saharan Africa is not keeping pace with rapid population growth. Over half of workers live below the moderate poverty threshold. Structural transformation has markedly slowed.",
           "genu": "Critical backdrop for Nigeria and Rwanda programme design. Our MERL frameworks should measure quality of employment, not just employment status.",
           "countries": [
-            "Nigeria",
-            "Rwanda",
             "Sub-Saharan Africa"
           ],
           "themes": [
@@ -296,7 +292,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text-1);font-
           "excerpt": "Education for Employment (MENA) joins the tripartite pact targeting 1 million new green jobs for youth by 2030, and 10,000 young green entrepreneurs. Focus on developing regions where environmental challenges are most pressing.",
           "genu": "GenU is a co-lead on the Green Jobs for Youth Pact. Track new partner announcements for alignment with our green economy workstream and CO communications.",
           "countries": [
-            "MENA",
+            "Middle East & North Africa",
             "Global"
           ],
           "themes": [
@@ -313,7 +309,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text-1);font-
           "excerpt": "Nigeria's Federal Ministry of Youth Development and IITA signed an MoU to unlock land at 42 National Youth Development Centres for agribusiness. The programme targets training over 6 million young Nigerians in modern agriculture, value-chain development, and climate-smart farming — backed by state governments, development partners, and the private sector.",
           "genu": "Strong alignment with GenU's green economy and livelihoods workstreams in Nigeria. The YALTF model — government land + IITA technical support + private sector — is worth tracking as a replicable public-private partnership for youth agripreneurship.",
           "countries": [
-            "Nigeria"
+            "Sub-Saharan Africa"
           ],
           "themes": [
             "Sector Spotlight",
@@ -383,10 +379,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text-1);font-
           "excerpt": "First-of-its-kind real-time data tool tracking youth employment trends across Africa. Built on a labour market model developed by World Data Lab, it underpins the Africa Youth Employment Outlook 2026 and provides country-level data for advocacy and programme design.",
           "genu": "Bookmark this as a live data reference for all Africa programme countries. Useful for country situation analyses, donor briefs, and tracking progress against employment targets in Nigeria, Rwanda, Ghana, and beyond.",
           "countries": [
-            "Sub-Saharan Africa",
-            "Nigeria",
-            "Rwanda",
-            "Ghana"
+            "Sub-Saharan Africa"
           ],
           "themes": [
             "MERL",
@@ -403,12 +396,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text-1);font-
           "excerpt": "Inaugural edition of a new annual series tracking Africa's youth labour market. Three key shifts: young Africans entering work before completing education (15-17); by 2033 services will overtake agriculture as the top employer of youth; and urbanisation is reshaping where youth jobs are. Young women remain disproportionately excluded. Africa's 550 million youth represent 22% of global youth.",
           "genu": "Essential Africa-specific complement to the ILO global data. The agriculture-to-services shift and urbanisation findings directly inform GenU programme design in Sub-Saharan Africa — especially for Nigeria, Rwanda, and East Africa COs. The gender exclusion findings reinforce our young women targeting priorities.",
           "countries": [
-            "Sub-Saharan Africa",
-            "Nigeria",
-            "Rwanda",
-            "Ghana",
-            "Kenya",
-            "Ethiopia"
+            "Sub-Saharan Africa"
           ],
           "themes": [
             "Livelihoods and skill-to-work transition",
@@ -471,7 +459,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text-1);font-
     <div class="chips" id="type-chips"></div>
   </div>
   <div class="filter-group">
-    <div class="filter-group-label">Country / region</div>
+    <div class="filter-group-label">Region</div>
     <div class="chips" id="country-chips"></div>
   </div>
   <div class="filter-group">
@@ -584,8 +572,9 @@ function renderChips(){
     +`<button class="chip${s.fStarred?' on-special':''}" onclick="toggleStarred()">Must-reads only</button>`
     +`<button class="chip${s.fUnread?' on-special':''}" onclick="toggleUnread()">Unread only</button>`;
 
+  const REGIONS = ['Global','East Asia & Pacific','Europe & Central Asia','Latin America & Caribbean','Middle East & North Africa','North America','South Asia','Sub-Saharan Africa'];
   document.getElementById('country-chips').innerHTML =
-    allCountries().map(c=>`<button class="chip${s.fCountries.has(c)?' on-country':''}" onclick="toggle('fCountries','${c.replace(/'/g,"\\'")}')">${c}</button>`).join('');
+    REGIONS.map(c=>`<button class="chip${s.fCountries.has(c)?' on-country':''}" onclick="toggle('fCountries','${c}')">${c}</button>`).join('');
 
   document.getElementById('theme-chips').innerHTML =
     allThemes().map(t=>`<button class="chip${s.fThemes.has(t)?' on-theme':''}" onclick="toggle('fThemes','${t.replace(/'/g,"\\'")}')">${t}</button>`).join('');
