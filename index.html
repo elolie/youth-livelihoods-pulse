@@ -77,10 +77,10 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text-1);font-
 .chips{display:flex;flex-wrap:wrap;gap:4px}
 .chip{font-size:11px;padding:3px 10px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-2);cursor:pointer;transition:all 0.12s;font-family:var(--font-sans)}
 .chip:hover{border-color:var(--border-md)}
-.chip.on-type{background:#E0F0FC;color:#0054A1;border-color:#00AEEF}
-.chip.on-country{background:var(--accent-bg);color:var(--accent);border-color:var(--accent-bd)}
-.chip.on-theme{background:var(--star-bg);color:var(--star);border-color:#E8C07A}
-.chip.on-special{background:var(--star-bg);color:var(--star);border-color:#E8C07A}
+.chip.on-type{background:#0054A1;color:#fff;border-color:#0054A1}
+.chip.on-country{background:#0054A1;color:#fff;border-color:#0054A1}
+.chip.on-theme{background:#0054A1;color:#fff;border-color:#0054A1}
+.chip.on-special{background:#0054A1;color:#fff;border-color:#0054A1}
 
 /* section */
 .section-head{font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--lightblue);margin:1.5rem 0 8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
@@ -133,11 +133,6 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text-1);font-
 .form-hint{font-size:11px;color:var(--text-3);margin-bottom:8px}
 
 /* export */
-.export-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;margin-top:1rem}
-.export-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.export-label{font-size:12px;font-weight:500;color:var(--text-2)}
-.export-ta{width:100%;font-family:monospace;font-size:12px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;color:var(--text-2);resize:vertical;line-height:1.6;min-height:200px}
-
 .empty{padding:3rem;text-align:center;color:var(--text-3);font-size:14px}
 
 @media(max-width:540px){
@@ -179,112 +174,203 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text-1);font-
 {
   "latest": "Q1 2026",
   "editions": {
-
     "Q1 2026": {
       "editorial": "Lorem ipsum",
       "entries": [
         {
-          "id": 1, "type": "flagship", "starred": true,
+          "id": 1,
+          "type": "flagship",
+          "starred": true,
           "title": "ILO Employment and Social Trends 2026",
           "source": "ILO · January 2026",
           "url": "https://www.ilo.org/publications/flagship-reports/employment-and-social-trends-2026",
           "excerpt": "Global youth unemployment at 12.4%; 260 million young people NEET. Progress on decent work has stalled. AI and trade volatility flagged as emerging threats to entry-level job creation. Jobs gap projected at 408 million people.",
           "genu": "The NEET and decent work data are our primary benchmarking baseline for 2026 — use the regional breakdowns to frame country-level programme narratives, especially for Sub-Saharan Africa and South Asia.",
-          "countries": ["Global"], "themes": ["NEET", "decent work", "data", "informality"]
+          "countries": [
+            "Global"
+          ],
+          "themes": [
+            "NEET",
+            "Livelihoods and skill-to-work transition"
+          ]
         },
         {
-          "id": 2, "type": "flagship", "starred": false,
+          "id": 2,
+          "type": "flagship",
+          "starred": false,
           "title": "World Development Indicators 2026 — youth unemployment data update",
           "source": "World Bank / ILO · Q1 2026",
           "url": "https://ourworldindata.org/grapher/unemployment-rate-for-young-people",
           "excerpt": "Updated modelled estimates for youth unemployment across 200+ countries, with improved harmonisation methodology. Useful for cross-country benchmarking and MERL indicator tracking.",
           "genu": "Good source for country-level baselines in our programme countries. Useful when setting MERL targets or contextualising outcome data from Bangladesh, Nigeria, Rwanda.",
-          "countries": ["Global"], "themes": ["data", "benchmarking", "MERL indicators"]
+          "countries": [
+            "Global"
+          ],
+          "themes": [
+            "MERL"
+          ]
         },
         {
-          "id": 3, "type": "trend", "starred": true,
+          "id": 3,
+          "type": "trend",
+          "starred": true,
           "title": "Is AI behind youth unemployment? Entry-level roles quietly disappearing",
           "source": "LSE British Politics & Policy · April 2026",
           "url": "https://blogs.lse.ac.uk/politicsandpolicy/is-ai-behind-youth-unemployment/",
           "excerpt": "Employment in AI-exposed roles for 22-25 year-olds fell 13% between 2022-2026, driven by reduced new hiring rather than layoffs. Mental health and economic inactivity now rival job scarcity as NEET drivers — 44% of NEET youth report a work-limiting health condition, up from 26% in 2015.",
           "genu": "Challenges the assumption that job-readiness skills alone are enough. If the entry-level is shrinking, our P2E and skilling models need to measure placement quality — not just placement rates.",
-          "countries": ["Global"], "themes": ["AI", "NEET", "mental health", "future of work"]
+          "countries": [
+            "Global"
+          ],
+          "themes": [
+            "NEET",
+            "Livelihoods and skill-to-work transition"
+          ]
         },
         {
-          "id": 4, "type": "trend", "starred": false,
+          "id": 4,
+          "type": "trend",
+          "starred": false,
           "title": "AI, automation and the vanishing entry-level job",
           "source": "PeopleScout Global Analysis · April 2026",
           "url": "https://www.peoplescout.com/insights/global-youth-employment-ai-automation-vanishing-entry-level/",
           "excerpt": "More than 1 in 4 young people globally are NEET. AI absorbing repeatable tasks reduces junior hiring, creating a hidden pipeline gap for mid-level leadership by the mid-2030s. Germany's dual education model (6.6% youth unemployment) cited as a structural counter-example.",
           "genu": "Adds private-sector perspective to the AI-jobs debate. The dual apprenticeship angle is relevant for GenU's TVET and employer-partnership workstreams.",
-          "countries": ["Global", "Germany"], "themes": ["AI", "TVET", "private sector", "future of work"]
+          "countries": [
+            "Global",
+            "Germany"
+          ],
+          "themes": [
+            "Sector Spotlight",
+            "Skilling"
+          ]
         },
         {
-          "id": 5, "type": "regional", "starred": true,
+          "id": 5,
+          "type": "regional",
+          "starred": true,
           "title": "ASEAN Ahead: AI & digital skills for NEET and TVET youth",
           "source": "ASEAN Foundation + LinkedIn · February 2026",
           "url": "https://aseanfoundation.org/advancing-future-skills-for-asean-youth-workforce-asean-foundation-and-linkedin-launch-asean-ahead-programme/",
           "excerpt": "New regional programme across 11 ASEAN member states targeting a 16.3% NEET rate. Combines AI career training, peer mentorship, and employer matching. Aligned with ASEAN Responsible AI Roadmap and ASEAN Vision 2045.",
           "genu": "Directly relevant for Vietnam and the broader Southeast Asia context. The employer-matching mechanism and AI readiness framing are worth examining for GenU regional programming.",
-          "countries": ["ASEAN", "Vietnam"], "themes": ["digital skills", "AI", "TVET", "platform economy"]
+          "countries": [
+            "ASEAN",
+            "Vietnam"
+          ],
+          "themes": [
+            "Skilling",
+            "Sector Spotlight"
+          ]
         },
         {
-          "id": 6, "type": "regional", "starred": false,
+          "id": 6,
+          "type": "regional",
+          "starred": false,
           "title": "Sub-Saharan Africa: 9 in 10 workers in informal employment",
           "source": "ILO Employment & Social Trends 2026 — regional spotlight",
           "url": "https://news.un.org/en/story/2026/01/1166751",
           "excerpt": "Job creation in sub-Saharan Africa is not keeping pace with rapid population growth. Over half of workers live below the moderate poverty threshold. Structural transformation has markedly slowed.",
           "genu": "Critical backdrop for Nigeria and Rwanda programme design. Our MERL frameworks should measure quality of employment, not just employment status.",
-          "countries": ["Nigeria", "Rwanda", "Sub-Saharan Africa"], "themes": ["informality", "working poverty", "structural transformation"]
+          "countries": [
+            "Nigeria",
+            "Rwanda",
+            "Sub-Saharan Africa"
+          ],
+          "themes": [
+            "Livelihoods and skill-to-work transition",
+            "NEET"
+          ]
         },
         {
-          "id": 8, "type": "policy", "starred": false,
+          "id": 8,
+          "type": "policy",
+          "starred": false,
           "title": "Green Jobs for Youth Pact: EFE joins ILO-UNEP-UNICEF initiative",
           "source": "ILO / UNEP / UNICEF · February 2026",
           "url": "https://www.ilo.org/education-employment-joins-forces-un-led-green-jobs-youth-pact",
           "excerpt": "Education for Employment (MENA) joins the tripartite pact targeting 1 million new green jobs for youth by 2030, and 10,000 young green entrepreneurs. Focus on developing regions where environmental challenges are most pressing.",
           "genu": "GenU is a co-lead on the Green Jobs for Youth Pact. Track new partner announcements for alignment with our green economy workstream and CO communications.",
-          "countries": ["MENA", "Global"], "themes": ["green jobs", "climate", "UNICEF", "partnerships"]
+          "countries": [
+            "MENA",
+            "Global"
+          ],
+          "themes": [
+            "Sector Spotlight"
+          ]
         },
         {
-          "id": 13, "type": "programme", "starred": true,
+          "id": 13,
+          "type": "programme",
+          "starred": true,
           "title": "Nigeria launches Youth in Agribusiness Land Trust Fund (YALTF)",
           "source": "Federal Ministry of Youth Development, Nigeria · March 2026",
           "url": "https://fmino.gov.ng/fg-launches-youth-agribusiness-land-initiative-unlocks-42-youth-centres-for-agricultural-opportunities/",
           "excerpt": "Nigeria's Federal Ministry of Youth Development and IITA signed an MoU to unlock land at 42 National Youth Development Centres for agribusiness. The programme targets training over 6 million young Nigerians in modern agriculture, value-chain development, and climate-smart farming — backed by state governments, development partners, and the private sector.",
           "genu": "Strong alignment with GenU's green economy and livelihoods workstreams in Nigeria. The YALTF model — government land + IITA technical support + private sector — is worth tracking as a replicable public-private partnership for youth agripreneurship.",
-          "countries": ["Nigeria"], "themes": ["agriculture", "agribusiness", "green jobs", "national policy", "private sector"]
+          "countries": [
+            "Nigeria"
+          ],
+          "themes": [
+            "Sector Spotlight",
+            "Entrepreneurship"
+          ]
         },
         {
-          "id": 11, "type": "merl", "starred": false,
+          "id": 11,
+          "type": "merl",
+          "starred": false,
           "title": "ILO: Assessing the green economy via harmonised labour force surveys",
           "source": "ILO · February 2026",
           "url": "https://www.ilo.org/publications/assessing-size-green-economy-global-evidence-harmonized-labour-force-surveys",
           "excerpt": "Methodological paper on measuring green economy employment using harmonised LFS data. Provides a cross-nationally comparable framework for defining and counting green jobs — currently a major measurement gap.",
           "genu": "Practical reference for MERL teams designing green economy indicators. Use this to push back on ad hoc definitions when COs are asked to report on green job outcomes.",
-          "countries": ["Global"], "themes": ["methodology", "green economy", "measurement", "LFS"]
+          "countries": [
+            "Global"
+          ],
+          "themes": [
+            "MERL",
+            "Sector Spotlight"
+          ]
         },
         {
-          "id": 12, "type": "merl", "starred": false,
+          "id": 12,
+          "type": "merl",
+          "starred": false,
           "title": "World Bank Youth Summit 2026 — FutureWorks: jobs for the digital age",
           "source": "World Bank · June 2026 (upcoming)",
           "url": "https://www.worldbank.org/en/events/2026/06/11/youth-summit-2026-future-works-designing-jobs-for-the-digital-age",
           "excerpt": "Summit focus: digital transformation, skills, entrepreneurship, and agriculture. Nearly 800 million young people at risk of labour market exclusion. Watch for evaluation and evidence sessions on measurement approaches.",
           "genu": "Flag for Q2 tracker. WBG Youth Summit evidence sessions often yield practical tools and comparative data worth sharing with the team.",
-          "countries": ["Global"], "themes": ["digital economy", "evidence", "upcoming event"]
+          "countries": [
+            "Global"
+          ],
+          "themes": [
+            "Sector Spotlight",
+            "MERL"
+          ]
         },
         {
-          "id": 14, "type": "flagship", "starred": true,
+          "id": 14,
+          "type": "flagship",
+          "starred": true,
           "title": "The Impact of Active Labour Market Programmes on Youth",
           "source": "ILO Technical Report · Q1 2026",
           "url": "https://www.ilo.org/publications/impact-active-labour-market-programmes-youth",
           "excerpt": "A landmark review of 30+ years of evidence across 62 countries on what works in youth employment. ALMPs show positive impacts on employment, income, and entrepreneurship — with strongest results for young women, youth under 25, and marginalized youth in low- and middle-income countries. Integrated approaches combining technical skills, soft skills, mentorship, and job matching consistently outperform single-component programmes.",
           "genu": "This is essential reading for GenU MERL teams — it provides the strongest available evidence base for our programme design assumptions. Key takeaway: prioritize integrated approaches, employer engagement, and income outcomes over training numbers alone. Entrepreneurship programmes are especially effective where formal jobs are scarce, which is the reality in most of our programme countries.",
-          "countries": ["Global"], "themes": ["MERL", "ALMPs", "evidence", "entrepreneurship", "skills", "gender", "marginalized youth"]
+          "countries": [
+            "Global"
+          ],
+          "themes": [
+            "MERL",
+            "Skilling",
+            "Entrepreneurship",
+            "Gender equality"
+          ]
         }
       ]
     }
-
   }
 }
 </script>
@@ -309,7 +395,6 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text-1);font-
   <span class="toolbar-title">Filters</span>
   <div class="toolbar-right">
     <button class="btn" onclick="clearFilters()">Clear filters</button>
-    <button class="btn primary" onclick="toggleExport()">Export digest</button>
   </div>
 </div>
 
@@ -329,14 +414,6 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text-1);font-
 </div>
 
 <div id="entries-wrap"></div>
-
-<div id="export-wrap" style="display:none">
-  <div class="export-box">
-    <div class="export-head">
-      <span class="export-label">Plain-text digest — paste into your email newsletter</span>
-      <button class="btn" onclick="copyExport()">Copy all</button>
-    </div>
-    <textarea class="export-ta" id="export-ta" readonly></textarea>
   </div>
 </div>
 
@@ -390,7 +467,7 @@ function filtered(){
 
 function clearFilters(){
   const s=S(); s.fTypes.clear(); s.fCountries.clear(); s.fThemes.clear();
-  s.fStarred=false; s.fUnread=false; render(true);
+  s.fStarred=false; s.fUnread=false; render();
 }
 function toggle(setName, val){
   const s=S(); const set=s[setName];
@@ -412,7 +489,7 @@ function renderTabs(){
     </button>`;
   }).join('');
 }
-function switchEdition(k){ currentEdition=k; render(true); }
+function switchEdition(k){ currentEdition=k; render(); }
 
 /* editorial */
 function renderEditorial(){
@@ -497,46 +574,14 @@ function toggleNotes(id){
   if(el) el.style.display=el.style.display==='none'?'block':'none';
 }
 
-/* export */
-function toggleExport(){
-  const w=document.getElementById('export-wrap');
-  if(w.style.display!=='none'){w.style.display='none';return;}
-  const ed=DATA.editions[currentEdition];
-  const dash='─'.repeat(54);
-  let txt=`YOUTH LIVELIHOODS PULSE — ${currentEdition}\nGenU MERL Team · Knowledge Monitoring\n${dash}\n\nEDITOR'S NOTE\n${ed.editorial}\n`;
-  SECTIONS.forEach(sec=>{
-    const se=ed.entries.filter(e=>e.type===sec.id);
-    if(!se.length) return;
-    txt+=`\n${dash}\n${sec.label.toUpperCase()}\n`;
-    se.forEach(e=>{
-      txt+=`\n${e.starred?'★ ':'  '}${e.title}\n   ${e.source}\n`;
-      if(e.excerpt) txt+=`   ${e.excerpt}\n`;
-      if(e.genu)    txt+=`   ▸ GenU relevance: ${e.genu}\n`;
-      if(e.url)     txt+=`   ${e.url}\n`;
-    });
-  });
-  document.getElementById('export-ta').value=txt;
-  w.style.display='block';
-}
-function copyExport(){
-  const ta=document.getElementById('export-ta');
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(ta.value).then(()=>{
-      const btn=document.querySelector('.export-head .btn');
-      if(btn){const orig=btn.textContent;btn.textContent='Copied!';setTimeout(()=>btn.textContent=orig,1500);}
-    });
-  } else {
-    ta.select(); document.execCommand('copy');
-  }
-}
 
-function render(resetExport){
+
+function render(){
   renderTabs();
   renderEditorial();
   renderStats();
   renderChips();
   renderEntries();
-  if(resetExport) document.getElementById('export-wrap').style.display='none';
 }
 
 render();
